@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XFApp.HotUpdate.ViewModels;
 
 namespace XFApp.HotUpdate.Views
 {
@@ -15,6 +16,14 @@ namespace XFApp.HotUpdate.Views
         public HotUpdatePage()
         {
             InitializeComponent();
+            this.BindingContext = new ViewModels.ViewModelTest() { Title = "My test title" };
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            (this.BindingContext as ViewModelTest).Title = "My title Onappearing";
+            (this.BindingContext as ViewModelTest).Test = "test2 ViewModel";
         }
     }
 

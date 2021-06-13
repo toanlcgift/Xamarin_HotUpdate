@@ -10,7 +10,7 @@ namespace XFApp.HotUpdate
         public static async Task OpenUIAsync()
         {
             Console.WriteLine("OpenUIAsync");
-            App.Current.MainPage = new HotUpdatePage();
+            await (App.Current.MainPage as NavigationPage).PushAsync(new HotUpdatePage());
             Console.WriteLine("done OpenUIAsync");
         }
     }

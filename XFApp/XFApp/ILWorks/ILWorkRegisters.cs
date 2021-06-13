@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using XFApp.ILWorks.Adaptors;
 using XFApp.ILWorks.Adaptors.Buttons;
 using XFApp.ILWorks.Adaptors.Pages;
+using XFApp.ILWorks.Adaptors.ViewModels;
 using XFApp.Services;
 
 namespace XFApp.ILWorks
@@ -13,8 +15,11 @@ namespace XFApp.ILWorks
         public static void RegisterDelegates(HotUpdateService hotUpdateService)
         {
             hotUpdateService.DelegateManager.RegisterMethodDelegate<object, EventArgs>();
-            hotUpdateService.DelegateManager.RegisterMethodDelegate<EventHandler<EventArgs>>();
+            hotUpdateService.DelegateManager.RegisterMethodDelegate<object>();
             hotUpdateService.DelegateManager.RegisterMethodDelegate<EventArgs>();
+            hotUpdateService.DelegateManager.RegisterMethodDelegate<EventHandler>();
+            hotUpdateService.DelegateManager.RegisterMethodDelegate<PropertyChangedEventHandler>();
+            hotUpdateService.DelegateManager.RegisterMethodDelegate<EventHandler<EventArgs>>();
             hotUpdateService.DelegateManager.RegisterDelegateConvertor<EventHandler<EventArgs>>((action) =>
             {
                 return action;
@@ -31,6 +36,7 @@ namespace XFApp.ILWorks
             hotUpdateService.RegisterCrossBindingAdaptor(new IAsyncStateMachineClassInheritanceAdaptor()); //用于Async/await
             hotUpdateService.RegisterCrossBindingAdaptor(new ContentPageAdaptors());
             hotUpdateService.RegisterCrossBindingAdaptor(new ButtonAdaptors());
+            hotUpdateService.RegisterCrossBindingAdaptor(new ViewModelAdaptors());
         }
     }
 }

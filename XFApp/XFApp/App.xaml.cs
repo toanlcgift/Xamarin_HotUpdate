@@ -31,7 +31,7 @@ namespace XFApp
             var hotupdate = core.Services.Get<IHotUpdateService>();
             await hotupdate.StartAsync();
 
-            Console.WriteLine("ILRuntime 准备完毕");
+            Console.WriteLine("ILRuntime Start");
 
             NavigationPage = new NavigationPage(new MainPage());
             MainPage = NavigationPage;

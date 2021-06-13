@@ -44,6 +44,8 @@ namespace XFApp.ILWorks.Adaptors.Pages
                 {
                     mOnAppearing = instance.Type.GetMethod("OnAppearing", 0);
                     mOnAppearingGot = true;
+                    var a = instance.CLRInstance as ContentPage;
+                    var b = a.BindingContext;
                 }
 
                 if (mOnAppearing != null && !mOnAppearingInvoking)

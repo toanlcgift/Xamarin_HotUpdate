@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using Xamarin.Forms;
 using XFApp.ILWorks.Adaptors;
 using XFApp.ILWorks.Adaptors.Buttons;
 using XFApp.ILWorks.Adaptors.Pages;
@@ -20,6 +21,8 @@ namespace XFApp.ILWorks
             hotUpdateService.DelegateManager.RegisterMethodDelegate<EventHandler>();
             hotUpdateService.DelegateManager.RegisterMethodDelegate<PropertyChangedEventHandler>();
             hotUpdateService.DelegateManager.RegisterMethodDelegate<EventHandler<EventArgs>>();
+            hotUpdateService.DelegateManager.RegisterMethodDelegate<Button>();
+            hotUpdateService.DelegateManager.RegisterMethodDelegate<Button, EventArgs>();
             hotUpdateService.DelegateManager.RegisterDelegateConvertor<EventHandler<EventArgs>>((action) =>
             {
                 return action;

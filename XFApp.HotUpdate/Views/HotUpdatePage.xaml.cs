@@ -19,7 +19,7 @@ namespace XFApp.HotUpdate.Views
             MessagingCenter.Instance.Subscribe<Button>(button, "Clicked",
                 (obj) =>
                 {
-                    DisplayAlert("ahihi", "kimochi", "OK");
+                    DisplayAlert("Alert", "Button Clicked!", "OK");
                 });
         }
 

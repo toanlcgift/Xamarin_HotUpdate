@@ -15,18 +15,7 @@ namespace XFApp.ILWorks
     {
         public static void RegisterDelegates(HotUpdateService hotUpdateService)
         {
-            hotUpdateService.DelegateManager.RegisterMethodDelegate<object, EventArgs>();
-            hotUpdateService.DelegateManager.RegisterMethodDelegate<object>();
-            hotUpdateService.DelegateManager.RegisterMethodDelegate<EventArgs>();
-            hotUpdateService.DelegateManager.RegisterMethodDelegate<EventHandler>();
-            hotUpdateService.DelegateManager.RegisterMethodDelegate<PropertyChangedEventHandler>();
-            hotUpdateService.DelegateManager.RegisterMethodDelegate<EventHandler<EventArgs>>();
             hotUpdateService.DelegateManager.RegisterMethodDelegate<Button>();
-            hotUpdateService.DelegateManager.RegisterMethodDelegate<Button, EventArgs>();
-            hotUpdateService.DelegateManager.RegisterDelegateConvertor<EventHandler<EventArgs>>((action) =>
-            {
-                return action;
-            });
         }
 
         internal static void RegisterCLRMethodRedirections(HotUpdateService hotUpdateService)
@@ -36,7 +25,7 @@ namespace XFApp.ILWorks
 
         public static void RegisterCrossBindingAdaptors(HotUpdateService hotUpdateService)
         {
-            hotUpdateService.RegisterCrossBindingAdaptor(new IAsyncStateMachineClassInheritanceAdaptor()); //用于Async/await
+            hotUpdateService.RegisterCrossBindingAdaptor(new IAsyncStateMachineClassInheritanceAdaptor());
             hotUpdateService.RegisterCrossBindingAdaptor(new ContentPageAdaptors());
             hotUpdateService.RegisterCrossBindingAdaptor(new ButtonAdaptors());
             hotUpdateService.RegisterCrossBindingAdaptor(new ViewModelAdaptors());

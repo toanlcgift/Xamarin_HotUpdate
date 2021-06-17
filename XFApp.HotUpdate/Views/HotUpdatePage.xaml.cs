@@ -16,23 +16,21 @@ namespace XFApp.HotUpdate.Views
         public HotUpdatePage()
         {
             InitializeComponent();
-            this.BindingContext = new ViewModels.ViewModelTest() { Title = "My test title" };
+            MessagingCenter.Instance.Subscribe<Button>(button, "Clicked",
+                (obj) =>
+                {
+                    DisplayAlert("Alert", "Button Clicked!", "OK");
+                });
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            (this.BindingContext as ViewModelTest).Title = "My title Onappearing";
-            (this.BindingContext as ViewModelTest).Test = "test2 ViewModel";
         }
     }
 
     public class HotUpdateButton : Button
     {
-        public static string ButtonClick(object sender, EventArgs e)
-        {
-            (sender as Button).Text = Guid.NewGuid().ToString();
-            return (sender as Button).Text;
-        }
+
     }
 }

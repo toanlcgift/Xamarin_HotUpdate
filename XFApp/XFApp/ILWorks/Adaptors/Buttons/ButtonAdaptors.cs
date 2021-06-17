@@ -42,11 +42,7 @@ namespace XFApp.ILWorks.Adaptors.Buttons
 
             private void MyButton_Clicked(object sender, EventArgs e)
             {
-                var result = this.appdomain.Invoke("XFApp.HotUpdate.Views.HotUpdateButton", "ButtonClick", null, sender, e);
-                if (result is string)
-                {
-                    var a = result as string;
-                }
+                MessagingCenter.Instance.Send<Button>(sender as Button, "Clicked");
             }
         }
     }

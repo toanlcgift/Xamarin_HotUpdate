@@ -6,7 +6,7 @@
              x:Class="XFApp.HotUpdate.Views.HotUpdatePage">
     <ContentPage.Content>
         <StackLayout x:Name="mainStack">
-            <Label Text="{Binding Test}"
+            <Label Text="abc"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"
                 FontSize="Large">
